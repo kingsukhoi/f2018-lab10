@@ -27,3 +27,26 @@ console.log( f5(7,8, function() {
                     }) );
 
 /* now define arrow function equivalents */
+
+const f1a = ()=>{return "function f1a"};
+console.log(f1a());
+
+const f2a = s => { return s };
+console.log( f2a('hello f2a') );
+
+const f3a = (a,b) => { return "function 3a result=" + (a+b); };
+console.log( f3a(4,5) );
+
+const f4a = (a,b) => {
+    let s = "function 4a result=";
+    let product = a*b;
+    let msg = s + product;
+    return msg;
+};
+console.log( f4a(6,7) );
+
+const f5a = (a,b,fn) => {
+    let msg = f4(a,b) + fn();
+    return msg;
+}
+console.log( f5a(7,8, () => { return " param f5a"}) );
