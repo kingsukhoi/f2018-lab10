@@ -1,14 +1,22 @@
 window.addEventListener('load', function() {
-    fetch('https://api.github.com/orgs/funwebdev-2nd-edafasd/repos')
+    fetch('https://api.github.com/orgs/funwebdev-2nd-ed/repos')
         .then(function (response) {
-            return response.json();
+            if (response.ok){
+                return response.json();
+            } else {
+                return Promise.reject({
+                    status: response.status,
+                    statusText: response.statusText
+                })
+            }
         })
-        .then(function (data) {
-            console.dir(data)
+        .then(function (response) {
+            console.dir(response);
         })
         .catch(function (error) {
-            console.log(error)
-        });
+            console.log(error);
+    });
+
 });
 
 
