@@ -3,8 +3,13 @@
 /*
     Creates map
 */ 
-
-
+let map;
+function initMap(){
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: {lat: 41.89474, lng: 12.4839},
+        zoom: 6
+    })
+}
 /*
     Creates marker and info window using the passed information
 */    
