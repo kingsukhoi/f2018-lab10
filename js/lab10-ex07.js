@@ -11,6 +11,7 @@ function initMap(){
         zoom: 18
     });
     map.setTilt(45);
+    createMarker( map, 41.89474, 12.4839, "Rome" );
 }
 /*
     Creates marker and info window using the passed information
