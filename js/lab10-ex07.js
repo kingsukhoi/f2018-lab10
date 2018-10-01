@@ -9,7 +9,8 @@ function initMap(){
         center: {lat: 41.89474, lng: 12.4839},
         mapTypeId: 'satellite',
         zoom: 18
-    })
+    });
+    map.setTilt(45);
 }
 /*
     Creates marker and info window using the passed information
