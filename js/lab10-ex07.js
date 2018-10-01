@@ -14,8 +14,15 @@ function initMap(){
 }
 /*
     Creates marker and info window using the passed information
-*/    
-
+*/
+function createMarker(map, latitude, longitude, city) {
+    let imageLatLong = {lat: latitude, lng: longitude };
+    let marker = new google.maps.Marker({
+        position: imageLatLong,
+        title: city,
+        map: map
+    });
+}
 
 /*
   Now consume web service and add markers to map
