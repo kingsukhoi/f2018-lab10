@@ -23,16 +23,18 @@ function updateA(gallery) {
             valueElem.appendChild(addLink(value));
         else 
             valueElem.appendChild(document.createTextNode(value));
-        const pTag = document.createElement('p');
-        pTag.appendChild(keyElem);
-        pTag.appendChild(valueElem);
-        return pTag;
+        const liTag = document.createElement('li');
+        liTag.appendChild(keyElem);
+        liTag.appendChild(valueElem);
+        return liTag;
     }
     const aDiv = document.querySelector(".a");
     clearDiv(aDiv);
-    aDiv.appendChild(createKeyValue("Gallery Name", gallery.nameEn));
-    aDiv.appendChild(createKeyValue("Link", gallery.link, true))
+    const list = document.createElement('ul');
+    list.appendChild(createKeyValue("Gallery Name", gallery.nameEn));
+    list.appendChild(createKeyValue("Link", gallery.link, true))
 
+    aDiv.appendChild(list);
 }
 
 function updateB() {
