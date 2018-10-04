@@ -1,17 +1,22 @@
+let galleries;
+
 function initMap() {
 
 }
 
-function addGalleries(galleryData) {
+function addGalleries() {
     function createBullet(name) {
         const li = document.createElement('li');
         li.textContent = name;
+        li.addEventListener('click', (e)=>{
+
+        });
         return li
     }
     const placeHere = document.querySelector(".b");
     clearDiv(placeHere);
     const list = document.createElement('ul');
-    for (let gallery of galleryData){
+    for (let gallery of galleries){
         list.appendChild(createBullet(gallery.nameEn))
     }
     placeHere.appendChild(list);
@@ -37,8 +42,8 @@ window.addEventListener('load', function () {
             }
         })
         .then((e) => {
-            console.log(e);
-            addGalleries(e);
+            galleries = e;
+            addGalleries();
         })
         .catch((e) => {
             console.error(e)
