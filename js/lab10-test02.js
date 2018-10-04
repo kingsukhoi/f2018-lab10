@@ -43,7 +43,7 @@ window.addEventListener('load', function () {
         })
         .then((e) => {
             galleries = e;
-            addGalleries();
+            updateB();
         })
         .catch((e) => {
             console.error(e)
