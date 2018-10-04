@@ -32,8 +32,8 @@ function updateA(gallery) {
     clearDiv(aDiv);
     const list = document.createElement('ul');
     list.appendChild(createKeyValue("Gallery Name", gallery.nameEn));
-    list.appendChild(createKeyValue("Link", gallery.link, true))
-
+    list.appendChild(createKeyValue("Link", gallery.link, true));
+    list.appendChild(createKeyValue("Address", `${gallery.location.address}, ${gallery.location.city} ${gallery.location.country}`));
     aDiv.appendChild(list);
 }
 
