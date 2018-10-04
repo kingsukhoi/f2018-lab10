@@ -1,7 +1,12 @@
 let galleries;
-
+let map;
 function initMap() {
-
+    map = new google.maps.Map(document.querySelector('.d'), {
+        center: {lat: 41.89474, lng: 12.4839},
+        zoom: 18,
+        mapTypeId: 'satellite',
+        tilt: 45
+    })
 }
 
 /**
@@ -47,7 +52,8 @@ function updateB() {
                 return curr.nameEn === name;
             });
             updateA(elem);
-            updateC(elem.paintings)
+            updateC(elem.paintings);
+            updateD(elem.location.latitude, elem.location.longitude);
         });
         return li
     }
@@ -74,6 +80,11 @@ function updateC(paintings) {
         ul.appendChild(li);
     }
     cDiv.appendChild(ul);
+}
+
+function updateD(lat, lng) {
+    map.setCenter({lat:lat, lng: lng});
+
 }
 
 function clearDiv(div) {
