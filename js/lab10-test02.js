@@ -47,6 +47,7 @@ function updateB() {
                 return curr.nameEn === name;
             });
             updateA(elem);
+            updateC(elem.paintings)
         });
         return li
     }
@@ -57,6 +58,22 @@ function updateB() {
         list.appendChild(createBullet(gallery.nameEn))
     }
     bDiv.appendChild(list);
+}
+
+function updateC(paintings) {
+    const cDiv = document.querySelector('.c');
+    clearDiv(cDiv);
+    const ul = document.createElement('ul');
+    for (let painting of paintings){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(painting.title));
+        li.addEventListener('click', (e) => {
+            const utterThis = new SpeechSynthesisUtterance(e.target.textContent);
+            speechSynthesis.speak(utterThis);
+        });
+        ul.appendChild(li);
+    }
+    cDiv.appendChild(ul);
 }
 
 function clearDiv(div) {
