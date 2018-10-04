@@ -4,22 +4,57 @@ function initMap() {
 
 }
 
-function addGalleries() {
+/**
+ * Update the A div
+ * @param gallery entire gallery object. Long story short you find the bloody thing.
+ */
+function updateA(gallery) {
+    function createKeyValue(key, value, isURL = false) {
+        function addLink(link) {
+            const linkElem = document.createElement('a');
+            linkElem.setAttribute('href', link);
+            linkElem.appendChild(document.createTextNode(link));
+            return linkElem;
+        }
+        const keyElem = document.createElement('strong');
+        keyElem.appendChild(document.createTextNode(key+": "));
+        const valueElem = document.createElement('span');
+        if(isURL)
+            valueElem.appendChild(addLink(value));
+        else 
+            valueElem.appendChild(document.createTextNode(value));
+        const pTag = document.createElement('p');
+        pTag.appendChild(keyElem);
+        pTag.appendChild(valueElem);
+        return pTag;
+    }
+    const aDiv = document.querySelector(".a");
+    clearDiv(aDiv);
+    aDiv.appendChild(createKeyValue("Gallery Name", gallery.nameEn));
+    aDiv.appendChild(createKeyValue("Link", gallery.link, true))
+
+}
+
+function updateB() {
     function createBullet(name) {
         const li = document.createElement('li');
         li.textContent = name;
         li.addEventListener('click', (e)=>{
-
+            const name = e.target.textContent;
+            const elem = galleries.find((curr)=>{
+                return curr.nameEn === name;
+            });
+            updateA(elem);
         });
         return li
     }
-    const placeHere = document.querySelector(".b");
-    clearDiv(placeHere);
+    const bDiv = document.querySelector(".b");
+    clearDiv(bDiv);
     const list = document.createElement('ul');
     for (let gallery of galleries){
         list.appendChild(createBullet(gallery.nameEn))
     }
-    placeHere.appendChild(list);
+    bDiv.appendChild(list);
 }
 
 function clearDiv(div) {
