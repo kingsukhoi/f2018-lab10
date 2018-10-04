@@ -23,7 +23,7 @@ function addGalleries() {
 }
 
 function clearDiv(div) {
-    div.innerHTML = ""
+    div.childNodes.forEach((curr) => div.removeChild(curr));
 }
 
 window.addEventListener('load', function () {
