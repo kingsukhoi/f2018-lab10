@@ -47,3 +47,7 @@ ul#galleryList li {
     margin-bottom: 0.25rem;
     cursor: pointer;
 }
+
+div.box.a ul{
+    list-style: none;
+}
