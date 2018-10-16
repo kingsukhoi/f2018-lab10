@@ -1,12 +1,14 @@
 let galleries;
 let map;
+let mapUp=false;
 function initMap() {
     map = new google.maps.Map(document.querySelector('.d'), {
         center: {lat: 41.89474, lng: 12.4839},
         zoom: 18,
         mapTypeId: 'satellite',
         tilt: 45
-    })
+    });
+    mapUp=true;
 }
 
 /**
@@ -83,7 +85,13 @@ function updateC(paintings) {
 }
 
 function updateD(lat, lng) {
+    /*document.querySelector(".d").setAttribute('style', 'display:;');*/
+    if(!mapUp){
+        initMap();
+    }
     map.setCenter({lat:lat, lng: lng});
+    map.setZoom(18);
+    map.setTilt(45);
 
 }
 
@@ -94,7 +102,9 @@ function clearDiv(div) {
 window.addEventListener('load', function () {
 
     const endpoint = 'https://gist.githubusercontent.com/rconnolly/a0ad7768d65b6fa46f4e007a1cf27193/raw/38696e5b84cd6b66667a6b87c66c058ab2606ba2/galleries.json';
-
+/*
+    document.querySelector('.d').setAttribute('style', 'display:none;')
+*/
     fetch(endpoint)
         .then(response => {
             if (response.ok) {
